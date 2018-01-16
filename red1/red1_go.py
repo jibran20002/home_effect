@@ -9,7 +9,6 @@ app = Flask(__name__)
 ask = Ask(app, "/red_reader")
 
 def get_headlines():
-#    pass
     user_pass_dict = { 'user': '',
                        'passwd': '',
                        'api_type': 'json'}
@@ -28,9 +27,6 @@ def get_headlines():
 def homepage():
     return "hi there, how ya doing?"
 
-if __name__ == '__main__':
-    app.run(debug=True)
-
 @ask.launch
 def start_skill():
     welcome_message = 'Hello there, is red hot right now?'
@@ -42,7 +38,12 @@ def share_headlines():
     headline_msg = 'The current world news headlines are {}'.format(headlines)
     return statement(headline_msg)
 
+@ask.intent("NoIntent")
+def no_intent():
+    bye_text = 'I am not sure why you asked me to run then, but okay... bye'
+    return statement(bye_text)
 
-
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
