@@ -1,3 +1,6 @@
+#run this using osascript sendMessage "+1xxxxxxxxx" 'message body'
+
+
 on run {targetBuddyPhone, targetMessage}
     tell application "Messages"
             set targetService to 1st service whose service type = iMessage
